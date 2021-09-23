@@ -5,6 +5,11 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in ftx-api.gemspec
 gemspec
 
+group :test do
+  gem 'simplecov', '< 0.18'
+  gem 'httparty', '~> 0.19'
+end
+
 gem "rake", "~> 13.0"
 gem "minitest", "~> 5.0"
 gem "rubocop", "~> 1.7"
