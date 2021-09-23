@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Ftx
-  module Api
-    VERSION = "0.1.0"
+module FTX
+  module API
+    VERSION = "0.2.0"
   end
 end
