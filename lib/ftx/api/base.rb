@@ -3,12 +3,16 @@
 require 'httparty'
 
 class FTX::API::Base
+  
   include HTTParty
+  base_uri 'https://ftx.com/api'
 
-  attr_reader :config
+  attr_reader :config, :key, :secret
 
-  def initialize(config: nil)
-    @config = FTX::API::Config.new(config)
+  def initialize(args = {})
+    @config = FTX::API::Config.new(args.dig(:config))
+    @key = args.dig(:key)
+    @secret = args.dig(:secret)
   end
 
   protected
@@ -48,6 +52,10 @@ class FTX::API::Base
 
   def print_log(method, message)
     logger = @config.logger
-    logger.send(method, message) if logger
+    if logger
+      puts "#{method}: #{message}"
+      # logger[method] = message
+    end
   end
+  
 end

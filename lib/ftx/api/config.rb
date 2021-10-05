@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class FTX::API::Config
-  attr_accessor :timeout
-  attr_accessor :logger
+  
+  attr_accessor :timeout, :logger
 
   def initialize(data = nil)
     data ||= {}

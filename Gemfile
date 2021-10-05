@@ -8,6 +8,7 @@ gemspec
 group :test do
   gem 'simplecov', '< 0.18'
   gem 'httparty', '~> 0.19'
+  gem 'openssl', '~> 2.2'
 end
 
 gem "rake", "~> 13.0"

@@ -3,7 +3,6 @@
 require_relative 'public'
 
 class FTX::API::Markets < FTX::API::Public
-  base_uri 'https://ftx.com/api'
 
   def list
     send_request(:get, '/markets', {})
@@ -25,4 +24,5 @@ class FTX::API::Markets < FTX::API::Public
     
     send_request(:get, "/markets/#{market_name}/candles", query)
   end
+  
 end
