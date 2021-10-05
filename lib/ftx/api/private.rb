@@ -23,7 +23,7 @@ class FTX::API::Private < FTX::API::Base
   end
 
   def signature_payload(method, path, query)
-    payload = [ts, method.to_s.upcase, "/api", path].compact_blank
+    payload = [ts, method.to_s.upcase, "/api", path].compact_empty
     
     if method==:post
       payload.push(query.to_json)

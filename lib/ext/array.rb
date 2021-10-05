@@ -4,7 +4,7 @@ class Array
 		map(&:symbolize_keys)
 	end
 
-	def compact_blank
+	def compact_empty
 		delete_if {|i| i.respond_to?(:empty?) ? !!i.empty? : !i }
 	end
 	
