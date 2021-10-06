@@ -152,6 +152,25 @@ Note: the create order method is not included as a test, because I have not been
 
 *Check the [FTX API docs](https://docs.ftx.com/#orders) for all parameters*
 
+### Fills
+
+Initialize an fills session:
+```ruby
+fills = FXT::API::Orders.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
+```
+
+Query for all fills:
+```ruby
+fills.list
+```
+or
+
+```ruby
+fills.list(market: 'BTC/USD')
+```
+
+Note: market is optional
+
 ### Convert Coins
 
 Initialize an convert session:
