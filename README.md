@@ -154,6 +154,39 @@ Note: the create order method is not included as a test, because I have not been
 
 *Check the [FTX API docs](https://docs.ftx.com/#orders) for all parameters*
 
+### Convert Coins
+
+Initialize an convert session:
+```ruby
+convert = FXT::API::Convert.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
+```
+
+Create a new quote:
+```ruby
+args = {
+      size:         0.01,   # 0.01 is the smallest increment
+      fromCoin:     "USD",
+      toCoin:       "BTC",
+    }
+
+convert.new_quote(args)
+```
+
+Response:
+```ruby
+{:quoteId=>2*******3}
+```
+
+Fetch a quote:
+```ruby
+convert.get_quote('quoteId')
+```
+
+Accept a quote:
+```ruby
+convert.accept_quote('quoteId')
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies.

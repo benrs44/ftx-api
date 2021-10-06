@@ -15,6 +15,8 @@ class FTX::API::Private < FTX::API::Base
       'FTX-KEY' => key,
       'FTX-SIGN' => signature(*args),
       'FTX-TS' => ts.to_s,
+      'Content-Type' => 'application/json',
+      'Accepts' => 'application/json',
     }
   end
 
@@ -26,12 +28,12 @@ class FTX::API::Private < FTX::API::Base
     payload = [ts, method.to_s.upcase, "/api", path].compact_empty
     
     if method==:post
-      payload.push(query.to_json)
+      payload << query.to_json
     elsif method==:get
-      payload.push("?" + URI.encode_www_form(query))
+      payload << ("?" + URI.encode_www_form(query))
     end unless query.empty?
 
-    "#{payload.join}".encode("UTF-8")
+    payload.join.encode("UTF-8")
   end
 
   def ts

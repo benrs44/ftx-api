@@ -4,10 +4,10 @@ require 'httparty'
 
 class FTX::API::Base
   
+  attr_reader :config, :key, :secret
+
   include HTTParty
   base_uri 'https://ftx.com/api'
-
-  attr_reader :config, :key, :secret
 
   def initialize(args = {})
     @config = FTX::API::Config.new(args.dig(:config))
@@ -21,16 +21,21 @@ class FTX::API::Base
     uuid = SecureRandom.uuid
     print_log(:info, "[API] #{uuid} #{method.upcase} '#{path}' query = #{query}")
 
-    body_or_query = method == :get ? :query : :body
+    if method == :get
+      body_or_query = :query
+    else
+      body_or_query = :body
+      query = query.to_json
+    end
 
     begin
       response = self.class.send(
-        method,
-        path,
+        method, 
+        path, 
         headers: headers,
         timeout: @config.timeout,
-        body_or_query => query,
-      ).parsed_response
+        body_or_query.to_sym => query
+      )
 
       print_log(:info, "[API] #{uuid} response #{response}")
       return parse_response(response)
@@ -43,6 +48,7 @@ class FTX::API::Base
   private
 
   def parse_response(response)
+    response = response.parsed_response
     if response.dig("success")
       response.dig("result").symbolize_keys
     else
@@ -54,7 +60,6 @@ class FTX::API::Base
     logger = @config.logger
     if logger
       puts "#{method}: #{message}"
-      # logger[method] = message
     end
   end
   
