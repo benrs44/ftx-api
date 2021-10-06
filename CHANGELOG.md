@@ -23,3 +23,6 @@
 
 ## [0.2.6] - 2021-10-06
 - Implement Fills endpoint including tests
+
+## [0.2.7] - 2021-10-06
+- Implement orders get_by_client_id endpoint

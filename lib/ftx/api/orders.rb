@@ -16,6 +16,10 @@ class FTX::API::Orders < FTX::API::Private
     send_request(:get, "/orders/#{order_id}", {})
   end
 
+  def get_by_client_id(client_id)
+    send_request(:get, "/orders/by_client_id/#{client_id}", {})
+  end
+
   def create(query = {})
     raise ArgumentError.new(
       "Market, side, price (can be nil), tupe and size params required"

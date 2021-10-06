@@ -126,9 +126,14 @@ Query for all historical orders:
 orders.history
 ```
 
-Fetch a specific order:
+Fetch a specific order by FTX `orderId`:
 ```ruby
-orders.get
+orders.get(order_id)
+```
+
+Fetch a specific order by `clientId`:
+```ruby
+orders.get_by_client_id(clientId)
 ```
 
 Create a new order:
