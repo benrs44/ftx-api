@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ftx-api (0.2.4)
+    ftx-api (0.2.5)
       httparty (~> 0.19)
       openssl (~> 2.2)
 
