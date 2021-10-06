@@ -20,3 +20,6 @@
 
 ## [0.2.5] - 2021-10-06
 - Fix issues with post methods and add Convert endpoint
+
+## [0.2.6] - 2021-10-06
+- Implement Fills endpoint including tests
