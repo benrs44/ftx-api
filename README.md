@@ -4,8 +4,6 @@ This gem is a ruby SDK for the FTX crypto exchange REST API.
 
 API docs can be found on the [FTX developer site](https://docs.ftx.com/)
 
-It is still under development and currently only covers the markets and futures endpoints.
-
 
 ## Installation
 
