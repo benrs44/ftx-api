@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ftx-api (0.2.7)
+    ftx-api (0.2.8)
       httparty (~> 0.19)
       openssl (~> 2.2)
 
@@ -69,4 +69,4 @@ DEPENDENCIES
   simplecov (< 0.18)
 
 BUNDLED WITH
-   2.2.27
+   2.2.29
