@@ -43,4 +43,26 @@ class FuturesTest < Minitest::Test
     }
     assert_hash_to_include expected_data, response
   end
+
+  def test_stats
+    response = @futures.stub(:print_log, nil) do
+      @futures.stats('YFI-PERP')
+    end
+
+    assert_instance_of Hash, response
+    assert_hash_has_keys response, [:volume, :nextFundingRate, :nextFundingTime, :openInterest]
+  end
+
+  def test_funding_rates
+    response = @futures.stub(:print_log, nil) do
+      @futures.funding_rates(future: 'YFI-PERP')
+    end
+
+    assert_instance_of Array, response
+
+    expected_data = {
+      :future                => 'YFI-PERP',
+    }
+    assert_hash_to_include expected_data, response.first
+  end
 end

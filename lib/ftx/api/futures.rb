@@ -11,5 +11,13 @@ class FTX::API::Futures < FTX::API::Public
   def get(futures_name)
     send_request(:get, "/futures/#{futures_name}", {})
   end
+
+  def stats(futures_name)
+    send_request(:get, "/futures/#{futures_name}/stats", {})
+  end
+
+  def funding_rates(query = {})
+    send_request(:get, '/funding_rates', query)
+  end
   
 end

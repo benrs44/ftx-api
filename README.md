@@ -23,7 +23,7 @@ Or install it yourself as:
 
 ## Usage
 
-### Markets
+### Markets (public)
 
 Initialize a markets session:
 ```ruby
@@ -51,9 +51,9 @@ markets.historic('BTC/USD', resolution: 86400*30)
 ```
 *Check the [FTX API docs](https://docs.ftx.com/?python#get-historical-prices) for additional parameters such as start_time and end_time*
 
-Note: resolution is in seconds so 86,400 would be the number of seconds in a day. As a default, the API responds with 12 months of historical prices.
+> Note: resolution is in seconds so 86,400 would be the number of seconds in a day. As a default, the API responds with 12 months of historical prices.
 
-### Futures
+### Futures (public)
 
 Initialize a futures session:
 ```ruby
@@ -69,6 +69,18 @@ Fetch a single market price:
 ```ruby
 futures.get('BTC-PERP')
 ```
+
+Fetch stats for a future:
+```ruby
+futures.stats('BTC-PERP')
+```
+
+Fetch all or one funding rates:
+```ruby
+futures.funding_rates(future: 'BTC-PERP')
+```
+
+> Note: future is optional, start_time and end_time are also accepted per the FTX API docs
 
 ### Account
 
@@ -153,15 +165,15 @@ args = {
 orders.create(args)
 ```
 
-Note: the create order method is not included as a test, because I have not been able to find FTX test keys and it seems a bit ridiculous to execute a live order for testing.
+> Note: the create order method is not included as a test, because I have not been able to find FTX test keys and it seems a bit ridiculous to execute a live order for testing.
 
 *Check the [FTX API docs](https://docs.ftx.com/#orders) for all parameters*
 
 ### Fills
 
-Initialize an fills session:
+Initialize a fills session:
 ```ruby
-fills = FXT::API::Orders.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
+fills = FXT::API::Fills.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
 ```
 
 Query for all fills:
@@ -174,7 +186,26 @@ or
 fills.list(market: 'BTC/USD')
 ```
 
-Note: market is optional
+> Note: market is optional
+
+### Funding
+
+Initialize a funding session:
+```ruby
+funding = FXT::API::Funding.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
+```
+
+Query for all or one funding payments:
+```ruby
+funding.payments(future: 'BTC-PERP')
+```
+
+Query for all or one funding rates:
+```ruby
+funding.rates(future: 'BTC-PERP')
+```
+
+> Note: future is optional, start_time and end_time are also accepted per the FTX API docs
 
 ### Convert Coins
 

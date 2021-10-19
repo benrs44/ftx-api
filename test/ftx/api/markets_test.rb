@@ -68,8 +68,6 @@ class MarketsTest < Minitest::Test
     end
 
     assert_instance_of Array, response
-    assert_equal 16, response.size
-
     assert_equal %w[startTime time open high low close volume], response.first.keys.map(&:to_s)
   end
 end

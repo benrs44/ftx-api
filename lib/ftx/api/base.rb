@@ -11,8 +11,8 @@ class FTX::API::Base
 
   def initialize(args = {})
     @config = FTX::API::Config.new(args.dig(:config))
-    @key = args.dig(:key)
-    @secret = args.dig(:secret)
+    @key = args.fetch(:key, ENV['FTX_KEY'])
+    @secret = args.fetch(:secret, ENV['FTX_SECRET'])
   end
 
   protected
