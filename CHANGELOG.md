@@ -26,3 +26,6 @@
 
 ## [0.2.7] - 2021-10-06
 - Implement orders get_by_client_id endpoint
+
+## [0.2.8] - 2021-10-18
+- Implement funding endpoints
