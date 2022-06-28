@@ -23,11 +23,17 @@ Or install it yourself as:
 
 ## Usage
 
+### Import the Gem
+
+```ruby
+require "ftx/api"
+```
+
 ### Markets (public)
 
 Initialize a markets session:
 ```ruby
-markets = FXT::API::Markets.new
+markets = FTX::API::Markets.new
 ```
 
 Query for all current prices:
@@ -57,7 +63,7 @@ markets.historic('BTC/USD', resolution: 86400*30)
 
 Initialize a futures session:
 ```ruby
-futures = FXT::API::Futures.new
+futures = FTX::API::Futures.new
 ```
 
 Query for all current prices:
@@ -86,7 +92,7 @@ futures.funding_rates(future: 'BTC-PERP')
 
 Initialize an account session:
 ```ruby
-account = FXT::API::Account.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
+account = FTX::API::Account.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
 ```
 
 Fetch information about account associated with key/secret:
@@ -103,7 +109,7 @@ account.positions
 
 Initialize a wallet session:
 ```ruby
-wallet = FXT::API::Wallet.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
+wallet = FTX::API::Wallet.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
 ```
 
 Query for all available coins:
@@ -125,7 +131,7 @@ wallet.all_balances
 
 Initialize an orders session:
 ```ruby
-orders = FXT::API::Orders.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
+orders = FTX::API::Orders.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
 ```
 
 Query for all open orders:
@@ -173,7 +179,7 @@ orders.create(args)
 
 Initialize a fills session:
 ```ruby
-fills = FXT::API::Fills.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
+fills = FTX::API::Fills.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
 ```
 
 Query for all fills:
@@ -192,7 +198,7 @@ fills.list(market: 'BTC/USD')
 
 Initialize a funding session:
 ```ruby
-funding = FXT::API::Funding.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
+funding = FTX::API::Funding.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
 ```
 
 Query for all or one funding payments:
@@ -211,7 +217,7 @@ funding.rates(future: 'BTC-PERP')
 
 Initialize an convert session:
 ```ruby
-convert = FXT::API::Convert.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
+convert = FTX::API::Convert.new(key: 'YOUR FTX KEY', secret: 'YOUR FTX SECRET')
 ```
 
 Create a new quote:
